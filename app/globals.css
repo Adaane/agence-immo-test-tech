@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter-tight);
+  --font-heading: var(--font-cormorant);
+  --font-display: var(--font-cormorant);
+
+  /* Brand palette */
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-stone: var(--stone);
+  --color-bronze: var(--bronze);
+  --color-bronze-deep: var(--bronze-deep);
+  --color-line: var(--line);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --ivory: #f5f1ea;
+  --paper: #fbf8f3;
+  --sand: #ebe4d8;
+  --ink: #16150f;
+  /* Secondary text: 6.2:1 on ivory. */
+  --stone: #5c574e;
+  /* Decorative accent (rules, large display). */
+  --bronze: #9a7b52;
+  /* Accent for small text: 5.6:1 on ivory. */
+  --bronze-deep: #745839;
+  --line: #d9d0c1;
+
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--ivory);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sand);
+  --muted-foreground: var(--stone);
+  --accent: var(--sand);
+  --accent-foreground: var(--ink);
+  --destructive: #a1301f;
+  --border: var(--line);
+  --input: #a99f8f;
+  --ring: var(--bronze-deep);
+  --radius: 0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--bronze-deep);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--ink);
+    color: var(--ivory);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans text-[0.7rem] font-medium tracking-[0.28em] uppercase;
+  }
+  .display {
+    @apply font-display font-light tracking-[-0.01em] text-balance;
+  }
+  .display em {
+    @apply font-normal italic;
+  }
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 9s var(--ease-luxe) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override every animation */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override every animation */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must override every animation */
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scroll-driven reveal: progressive enhancement, no JavaScript. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
