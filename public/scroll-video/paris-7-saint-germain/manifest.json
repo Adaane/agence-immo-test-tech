@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "fps": 12,
+  "scenes": [
+    {
+      "id": "entree-sejour",
+      "theme": "light",
+      "eyebrow": "L'arrivée",
+      "title": "Le vestibule",
+      "steps": ["Sol en damier de marbre", "Double porte d'époque", "Gardien"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-7-saint-germain/entree-sejour/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-7-saint-germain/entree-sejour/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "sejour-salle-a-manger",
+      "theme": "light",
+      "eyebrow": "Les réceptions",
+      "title": "Le double séjour",
+      "steps": ["Deux cheminées", "Parquet Versailles", "Enfilade traversante"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-7-saint-germain/sejour-salle-a-manger/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-7-saint-germain/sejour-salle-a-manger/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "salle-a-manger-jardin",
+      "theme": "light",
+      "eyebrow": "Sur le jardin",
+      "title": "La salle à manger",
+      "steps": ["Ouverture plein jardin", "212 m² habitables", "4 chambres"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-7-saint-germain/salle-a-manger-jardin/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-7-saint-germain/salle-a-manger-jardin/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,14 @@
+import { Suspense } from "react";
 import { ContactForm } from "@/components/contact/contact-form";
+import { ContactFormFromUrl } from "@/components/contact/contact-form-from-url";
+import { getProperties } from "@/lib/properties/data";
 import { SectionHeading } from "./section-heading";
+
+const subjects = getProperties().map(({ id, title, city }) => ({
+  id,
+  title,
+  city,
+}));
 
 export function Contact() {
   return (
@@ -19,7 +28,9 @@ export function Contact() {
           </p>
         </div>
         <div className="lg:col-span-7">
-          <ContactForm />
+          <Suspense fallback={<ContactForm />}>
+            <ContactFormFromUrl subjects={subjects} />
+          </Suspense>
         </div>
       </div>
     </section>

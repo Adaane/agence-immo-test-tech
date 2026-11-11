@@ -20,6 +20,7 @@ import {
   REQUEST_TYPE_LABELS,
   REQUEST_TYPES,
 } from "@/lib/contact/schema";
+import type { ContactSubject } from "@/lib/contact/subject";
 import { CITIES, CITY_LABELS } from "@/lib/properties/schema";
 import { cn } from "@/lib/utils";
 
@@ -31,8 +32,20 @@ const DEFAULT_VALUES: ContactInput = {
   requestType: "" as ContactInput["requestType"],
   message: "",
   consent: false as unknown as true,
+  propertyId: "",
   website: "",
 };
+
+const defaultValuesFor = (subject?: ContactSubject): ContactInput =>
+  subject
+    ? {
+        ...DEFAULT_VALUES,
+        city: subject.city,
+        requestType: "acheter",
+        message: `Je souhaite organiser une visite du bien « ${subject.title} ».`,
+        propertyId: subject.id,
+      }
+    : DEFAULT_VALUES;
 
 const fieldClass =
   "h-auto border-0 border-b border-input bg-transparent px-0 py-2.5 text-base focus-visible:border-ink focus-visible:ring-0 aria-invalid:border-destructive aria-invalid:ring-0";
@@ -68,7 +81,7 @@ function FormField({
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ subject }: { subject?: ContactSubject }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(
     submitContact,
@@ -80,7 +93,7 @@ export function ContactForm() {
     formState: { errors },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: DEFAULT_VALUES,
+    defaultValues: defaultValuesFor(subject),
   });
 
   const errorFor = (field: ContactFieldName) =>
@@ -123,6 +136,15 @@ export function ContactForm() {
       noValidate
       className="grid gap-x-10 gap-y-4 md:grid-cols-2"
     >
+      {subject ? (
+        <p className="border-l border-bronze pl-4 md:col-span-2">
+          <span className="eyebrow block text-stone">Demande concernant</span>
+          <span className="font-display text-2xl font-light">
+            {subject.title}
+          </span>
+        </p>
+      ) : null}
+      <input type="hidden" {...register("propertyId")} />
       <FormField id="contact-name" label="Nom" error={errorFor("name")}>
         <Input
           id="contact-name"

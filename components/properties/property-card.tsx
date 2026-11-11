@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { formatPrice, formatSurface } from "@/lib/properties/format";
 import {
   BADGE_LABELS,
@@ -8,6 +9,7 @@ import {
 
 export function PropertyCard({ property }: { property: Property }) {
   const {
+    id,
     title,
     type,
     district,
@@ -20,7 +22,7 @@ export function PropertyCard({ property }: { property: Property }) {
   } = property;
 
   return (
-    <article className="group flex h-full flex-col">
+    <article className="group relative flex h-full flex-col">
       <div className="relative aspect-[4/5] overflow-hidden bg-sand">
         <Image
           src={image.src}
@@ -40,7 +42,12 @@ export function PropertyCard({ property }: { property: Property }) {
           {PROPERTY_TYPE_LABELS[type]} · {district}
         </p>
         <h3 className="font-display text-[1.65rem] leading-tight font-light">
-          {title}
+          <Link
+            href={`/biens/${id}`}
+            className="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-ink"
+          >
+            {title}
+          </Link>
         </h3>
         <dl className="mt-auto flex flex-wrap items-baseline gap-x-4 gap-y-2 pt-2 text-sm text-stone">
           <div className="mr-auto">

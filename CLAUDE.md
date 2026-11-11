@@ -17,11 +17,12 @@ Les commandes disponibles sont dans les scripts de `package.json`.
 
 ## Parcours critiques et pages clés
 
-Page clé : `/` (homepage).
+Pages clés : `/` (homepage) et `/biens/[id]` (fiche d'un bien, prérendue pour les 9 biens).
 
 - Recherche du hero (ville, type, budget) : filtre la section « Biens d'exception » et y fait défiler.
 - Filtre de ville de la section biens : Tous, Paris, Lyon.
 - Formulaire de contact : validation Zod partagée client et serveur, Server Action sans envoi réel, honeypot anti-spam, consentement RGPD obligatoire.
+- Carte de bien → fiche → « Organiser une visite » : `/?bien=<id>#contact` préremplit le formulaire, le serveur vérifie que le bien existe.
 
 ## Décisions du projet
 
@@ -30,6 +31,8 @@ Page clé : `/` (homepage).
 - Palette : ivoire `#F5F1EA`, encre `#16150F`, bronze `#9A7B52`, gris pierre. Coins droits, aucune ombre.
 - Typographies via `next/font` : Cormorant Garamond (titres, un mot en italique) et Inter Tight (texte).
 - Aucun analytics, aucun script tiers, aucune carte intégrée.
+- Vocabulaire métier dans `GLOSSARY.md`, décisions dans `docs/adr/`.
+- Visites immersives : uniquement sur les exclusivités. Générées avec le skill `scroll-video-site` (sources dans `scroll-video/<id>/`, ignorées par git), frames WebP commitées dans `public/scroll-video/<id>/`, lues par `lib/visit/scroll-sequence.ts` avec GSAP et Lenis chargés en lazy sur la fiche seulement.
 
 ## TDD
 

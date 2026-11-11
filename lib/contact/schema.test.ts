@@ -9,6 +9,7 @@ const valid = {
   requestType: "acheter",
   message: "Je recherche un appartement familial avec terrasse dans le 7e.",
   consent: true,
+  propertyId: "",
   website: "",
 };
 

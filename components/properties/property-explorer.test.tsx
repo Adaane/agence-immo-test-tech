@@ -21,6 +21,7 @@ const make = (
   surface: 200,
   bedrooms: 3,
   tags: ["Terrasse"],
+  description: "Description de test.",
   image: { src: "/images/test.jpg", alt: `Photo ${id}` },
 });
 

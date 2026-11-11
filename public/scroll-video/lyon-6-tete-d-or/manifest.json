@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "fps": 12,
+  "scenes": [
+    {
+      "id": "entree-salon",
+      "theme": "light",
+      "eyebrow": "L'arrivée",
+      "title": "La galerie",
+      "steps": ["Parquet en point de Hongrie", "Hauts plafonds", "265 m²"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/lyon-6-tete-d-or/entree-salon/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/lyon-6-tete-d-or/entree-salon/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "salon-chambre",
+      "theme": "light",
+      "eyebrow": "La réception",
+      "title": "Le salon de musique",
+      "steps": ["Piano à queue", "Face au parc", "Lustre d'époque"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/lyon-6-tete-d-or/salon-chambre/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/lyon-6-tete-d-or/salon-chambre/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "chambre-balcon",
+      "theme": "light",
+      "eyebrow": "L'intime",
+      "title": "Sur le parc",
+      "steps": ["5 chambres", "Balcon filant", "Double garage"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/lyon-6-tete-d-or/chambre-balcon/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/lyon-6-tete-d-or/chambre-balcon/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    }
+  ]
+}
