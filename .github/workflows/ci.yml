@@ -57,6 +57,7 @@ jobs:
             playwright-report
             .lighthouseci/reports
           if-no-files-found: ignore
+          include-hidden-files: true
       - run: pnpm audit --audit-level high
 
   codeql:
