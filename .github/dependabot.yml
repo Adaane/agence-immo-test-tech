@@ -4,6 +4,12 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      # react and react-dom must always share the exact same version.
+      react:
+        patterns:
+          - react
+          - react-dom
   - package-ecosystem: github-actions
     directory: /
     schedule:
