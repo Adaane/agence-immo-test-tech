@@ -8,6 +8,7 @@ const base: Omit<Property, "id" | "city" | "type" | "price"> = {
   surface: 200,
   bedrooms: 3,
   tags: [],
+  description: "Description de test.",
   image: { src: "/images/test.jpg", alt: "Salon" },
 };
 

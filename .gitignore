@@ -45,3 +45,6 @@ next-env.d.ts
 /playwright-report
 /blob-report
 /.lighthouseci
+
+# scroll-video generation sources (frames in public/scroll-video are committed)
+/scroll-video/

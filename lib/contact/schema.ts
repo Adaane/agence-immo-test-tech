@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { propertyIdSchema } from "@/lib/properties/schema";
 
 export const REQUEST_TYPES = ["acheter", "vendre", "estimer", "autre"] as const;
 
@@ -31,6 +32,8 @@ export const contactSchema = z.object({
     .min(20, "Votre message doit contenir au moins 20 caractères.")
     .max(2000, "Votre message ne doit pas dépasser 2 000 caractères."),
   consent: z.literal(true, "Votre consentement est nécessaire."),
+  /** Bien the request is about; empty for a general request. */
+  propertyId: z.union([z.literal(""), propertyIdSchema]),
   /** Honeypot: hidden from people, filled by bots. */
   website: z.string(),
 });

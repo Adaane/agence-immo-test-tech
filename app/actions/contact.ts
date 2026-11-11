@@ -5,6 +5,10 @@ import {
   type ContactState,
   contactSchema,
 } from "@/lib/contact/schema";
+import { getProperty } from "@/lib/properties/data";
+
+const UNKNOWN_PROPERTY_MESSAGE =
+  "Le bien concerné est introuvable. Rechargez la page et réessayez.";
 
 const SUCCESS_MESSAGE =
   "Merci, votre demande a bien été reçue. Un conseiller vous répond sous 24 heures ouvrées.";
@@ -31,8 +35,17 @@ export async function submitContact(
     requestType: readText(formData, "requestType"),
     message: readText(formData, "message"),
     consent: formData.get("consent") === "on",
+    propertyId: readText(formData, "propertyId"),
     website: "",
   });
+
+  // The bien is a hidden field: an invalid one is not something people can fix.
+  const invalidProperty = result.success
+    ? result.data.propertyId !== "" && !getProperty(result.data.propertyId)
+    : result.error.issues.some((issue) => issue.path[0] === "propertyId");
+  if (invalidProperty) {
+    return { status: "error", message: UNKNOWN_PROPERTY_MESSAGE };
+  }
 
   if (!result.success) {
     const fieldErrors: Partial<Record<ContactFieldName, string>> = {};

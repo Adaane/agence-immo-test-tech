@@ -45,6 +45,40 @@ describe("ContactForm", () => {
     ).toBeInTheDocument();
   });
 
+  it("prefills the request when it concerns a bien", async () => {
+    const user = userEvent.setup();
+    render(
+      <ContactForm
+        subject={{
+          id: "lyon-6-tete-d-or",
+          title: "Appartement de réception sur le parc",
+          city: "lyon",
+        }}
+      />,
+    );
+    expect(
+      screen.getByText("Appartement de réception sur le parc"),
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText("Ville concernée")).toHaveValue("lyon");
+    expect(screen.getByLabelText("Votre projet")).toHaveValue("acheter");
+    expect(screen.getByLabelText("Message")).toHaveValue(
+      "Je souhaite organiser une visite du bien « Appartement de réception sur le parc ».",
+    );
+    expect(document.querySelector('input[name="propertyId"]')).toHaveValue(
+      "lyon-6-tete-d-or",
+    );
+
+    await user.type(screen.getByLabelText("Nom"), "Claire Martin");
+    await user.type(screen.getByLabelText("E-mail"), "claire@example.com");
+    await user.click(screen.getByRole("checkbox"));
+    await user.click(
+      screen.getByRole("button", { name: "Envoyer ma demande" }),
+    );
+    expect(
+      await screen.findByText(/votre demande a bien été reçue/),
+    ).toBeInTheDocument();
+  });
+
   it("hides the honeypot from people and assistive technologies", () => {
     render(<ContactForm />);
     const honeypot = document.querySelector('input[name="website"]');

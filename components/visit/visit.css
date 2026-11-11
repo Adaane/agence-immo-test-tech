@@ -1,0 +1,124 @@
+/* Visite immersive: styles for lib/visit/scroll-sequence.ts, on the Maison Vérane palette. */
+.ssq-root {
+  /* Card position when not full-bleed: top right bottom left (fractions of the stage). */
+  --ssq-card-top: 14%;
+  --ssq-card-right: 5%;
+  --ssq-card-bottom: 14%;
+  --ssq-card-left: 42%;
+
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+.ssq-scene {
+  position: relative;
+}
+.ssq-stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.ssq-card {
+  --ssq-inset: 1;
+  position: absolute;
+  inset: 0;
+  background: var(--sand);
+  clip-path: inset(
+    calc(var(--ssq-inset) * var(--ssq-card-top))
+      calc(var(--ssq-inset) * var(--ssq-card-right))
+      calc(var(--ssq-inset) * var(--ssq-card-bottom))
+      calc(var(--ssq-inset) * var(--ssq-card-left))
+  );
+  will-change: clip-path;
+}
+.ssq-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Ivory veil behind the copy once the card is full-bleed, so titles stay legible. */
+.ssq-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--ivory) 0%,
+    color-mix(in srgb, var(--ivory) 70%, transparent) 30%,
+    transparent 60%
+  );
+  opacity: calc(1 - var(--ssq-inset));
+  pointer-events: none;
+}
+
+.ssq-copy {
+  position: absolute;
+  left: 6%;
+  top: 50%;
+  z-index: 1;
+  max-width: 32%;
+  transform: translateY(-50%);
+}
+.ssq-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bronze-deep);
+}
+.ssq-title {
+  margin: 0;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+}
+.ssq-steps {
+  position: relative;
+  min-height: 3em;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ssq-step {
+  position: absolute;
+  inset: 0 auto auto 0;
+  border-left: 1px solid var(--bronze);
+  padding-left: 1rem;
+  font-size: 1.05rem;
+}
+
+/* Reduced motion: static last frame, every step visible. */
+.ssq-static .ssq-card {
+  --ssq-inset: 0;
+}
+.ssq-static .ssq-step {
+  position: static;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .ssq-root {
+    --ssq-card-top: 10%;
+    --ssq-card-right: 5%;
+    --ssq-card-bottom: 44%;
+    --ssq-card-left: 5%;
+  }
+  .ssq-copy {
+    top: auto;
+    right: 6%;
+    bottom: 8%;
+    left: 6%;
+    max-width: none;
+    transform: none;
+  }
+  .ssq-card::after {
+    background: linear-gradient(
+      0deg,
+      var(--ivory) 0%,
+      color-mix(in srgb, var(--ivory) 70%, transparent) 30%,
+      transparent 60%
+    );
+  }
+}

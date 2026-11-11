@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "fps": 12,
+  "scenes": [
+    {
+      "id": "cour-escalier",
+      "theme": "light",
+      "eyebrow": "L'arrivée",
+      "title": "La cour pavée",
+      "steps": ["Porche cocher", "Façade en pierre de taille", "640 m²"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-8-monceau/cour-escalier/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-8-monceau/cour-escalier/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "escalier-grand-salon",
+      "theme": "light",
+      "eyebrow": "L'apparat",
+      "title": "L'escalier d'honneur",
+      "steps": ["Rampe en fer forgé", "Ascenseur", "7 chambres"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-8-monceau/escalier-grand-salon/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-8-monceau/escalier-grand-salon/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    },
+    {
+      "id": "grand-salon-bibliotheque",
+      "theme": "light",
+      "eyebrow": "Le cœur de la maison",
+      "title": "Les salons",
+      "steps": ["Boiseries classées", "Lustres en cristal", "Bibliothèque"],
+      "frames": {
+        "desktop": {
+          "path": "/scroll-video/paris-8-monceau/grand-salon-bibliotheque/desktop/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        },
+        "mobile": {
+          "path": "/scroll-video/paris-8-monceau/grand-salon-bibliotheque/mobile/",
+          "count": 60,
+          "ext": "webp",
+          "pad": 4
+        }
+      }
+    }
+  ]
+}

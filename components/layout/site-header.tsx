@@ -34,7 +34,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-[90rem] items-center justify-between px-6 lg:px-12">
-        <a href="#top">
+        <a href="/">
           <Logo />
         </a>
 
@@ -55,7 +55,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-4">
           <a
-            href="#contact"
+            href="/#contact"
             className={cn(
               "eyebrow hidden border px-5 py-3 transition-colors duration-300 sm:inline-block",
               scrolled
@@ -85,7 +85,7 @@ export function SiteHeader() {
                 <ul className="flex flex-col gap-6">
                   {[
                     ...NAV_LINKS,
-                    { href: "#contact", label: "Prendre rendez-vous" },
+                    { href: "/#contact", label: "Prendre rendez-vous" },
                   ].map((link) => (
                     <li key={link.href}>
                       <SheetClose

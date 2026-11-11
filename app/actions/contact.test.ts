@@ -37,6 +37,25 @@ describe("submitContact", () => {
     expect(state.fieldErrors?.consent).toBeDefined();
   });
 
+  it("confirms a request about a known bien", async () => {
+    const state = await submitContact(
+      initialContactState,
+      toFormData({ ...valid, propertyId: "lyon-6-tete-d-or" }),
+    );
+    expect(state.status).toBe("success");
+  });
+
+  it.each([
+    ["an unknown", "bien-inexistant"],
+    ["a malformed", "<script>"],
+  ])("rejects a request about %s bien", async (_label, propertyId) => {
+    const state = await submitContact(
+      initialContactState,
+      toFormData({ ...valid, propertyId }),
+    );
+    expect(state.status).toBe("error");
+  });
+
   it("silently accepts a request caught by the honeypot", async () => {
     const state = await submitContact(
       initialContactState,
